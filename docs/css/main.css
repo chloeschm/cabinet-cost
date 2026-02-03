@@ -1,0 +1,127 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    padding: 0;
+}
+.parent-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #F5F5F4;
+}
+
+/* CONTROL PANEL */
+.control-panel {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    background-color: #C0B29E;
+    color: #595457;
+    border-right: 2px solid #8B6F47;
+}
+
+.control-title {
+    text-align: center;
+    font-family: 'Unbounded', sans-serif, cursive;
+    font-weight: 500;
+}
+
+.control-inputs {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.input-label {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+    color: #7A7477;
+}
+
+.input-field {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: 1.5px solid #8B6F47;
+    background-color: #F5F5F4;
+    color: #4D6A52;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.input-field:focus {
+    border-color: #4D6A52;
+    box-shadow: 0 0 0 2px rgba(77, 106, 82, 0.25);
+}
+
+.input-field[type="number"] {
+    appearance: textfield;
+}
+
+.input-field:disabled {
+    background-color: #E7E5E4;
+    color: #7A7477;
+}
+
+/* VIEW PANEL */
+.view-panel {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F4;
+    color: #464345;
+    border-left: 2px solid #8B6F47;
+    border-right: 2px solid #8B6F47;
+}
+
+.view-title {
+    text-align: center;
+    font-family: 'Unbounded', sans-serif, cursive;
+    font-weight: 500;
+}
+
+/* COST PANEL */
+.cost-panel {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: #C0B29E;
+    color: #595457;
+    border-left: 2px solid #8B6F47;
+}
+
+.cost-title {
+    text-align: center;
+    font-family: 'Unbounded', sans-serif, cursive;
+    font-weight: 500;
+}
+
+.cost-details {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+    padding: 24px;
+    color: #7A7477;
+}
+
+.button, .option.active {
+    background-color: #4D6A52;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+}
+
+.button:hover {
+    background-color: #3F5A47;
+}
