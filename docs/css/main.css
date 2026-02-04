@@ -115,6 +115,11 @@ html, body {
     color: #7A7477;
 }
 
+.cost-explain {
+    font-size: 0.85rem;
+    color: #867f82;
+}
+
 .button, .option.active {
     background-color: #4D6A52;
     color: #FFFFFF;
@@ -124,4 +129,17 @@ html, body {
 
 .button:hover {
     background-color: #3F5A47;
+}
+
+
+/* MAIN.JS CSS */
+.viewer-container {
+    flex: 1;
+    position: relative;
+}
+
+.viewer-container canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
