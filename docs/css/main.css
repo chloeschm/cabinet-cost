@@ -143,3 +143,18 @@ html, body {
     height: 100%;
     display: block;
 }
+
+/* FOOTER */
+.credit {
+    margin-top: auto;
+    text-align: right;
+    font-size: 0.9rem;
+    color: #8B6F47; 
+    text-decoration: none;
+    padding-top: 20px;
+    padding-right: 5px;
+}
+
+.credit:hover {
+    color: #D8C4A3; 
+}
