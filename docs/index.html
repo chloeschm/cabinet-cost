@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>3D Cabninet Cost Eval</title>
-    <meta name="description" content="Chloe Schmitt - Portfolio">
+    <title>3D Cabinet Cost Eval</title>
+    <meta name="description" content="Cabinet Cost Evaluator">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
@@ -32,54 +32,125 @@
         <section class="control-panel">
             <h1 class="control-title">CONTROLS</h1>
             <div class="control-inputs">
-                <!-- SIZE -->
-                <div class="input-group">
-                    <label for="width-input" class="input-label">Width (inches):</label>
-                    <input type="number" id="width-input" class="input-field" value="24">
-                </div>
-                <div class="input-group">
-                    <label for="height-input" class="input-label">Height (inches):</label>
-                    <input type="number" id="height-input" class="input-field" value="36">
-                </div>
-                <div class="input-group">
-                    <label for="depth-input" class="input-label">Depth (inches):</label>
-                    <input type="number" id="depth-input" class="input-field" value="12">
+
+                <!-- CABINET DIMENSIONS SECTION -->
+                <div class="accordion-section">
+                    <button class="accordion-header collapsed">
+                        <span>Cabinet Dimensions</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="input-group">
+                            <label for="width-input" class="input-label">Width (inches):</label>
+                            <input type="number" id="width-input" class="input-field" value="24" min="12" max="48">
+                        </div>
+                        <div class="input-group">
+                            <label for="height-input" class="input-label">Height (inches):</label>
+                            <input type="number" id="height-input" class="input-field" value="36" min="12" max="96">
+                        </div>
+                        <div class="input-group">
+                            <label for="depth-input" class="input-label">Depth (inches):</label>
+                            <input type="number" id="depth-input" class="input-field" value="12" min="6" max="24">
+                        </div>
+                        <div class="input-group">
+                            <label for="cabinet-type" class="input-label">Cabinet Type:</label>
+                            <select id="cabinet-type" class="input-field">
+                                <option value="base">Base Cabinet</option>
+                                <option value="wall">Wall Cabinet</option>
+                                <option value="tall">Tall Cabinet</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- MATERIAL, FINISH, COLOR -->
-                <div class="input-group">
-                    <label for="material-select" class="input-label">Material:</label>
-                    <select id="material-select" class="input-field">
-                        <option value="plywood">Plywood</option>
-                        <option value="mdf">MDF</option>
-                        <option value="solid-wood">Solid Wood</option>
-                    </select>
+                <!-- STYLING & FEATURES SECTION -->
+                <div class="accordion-section">
+                    <button class="accordion-header collapsed">
+                        <span>Styling & Features</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="input-group">
+                            <label class="input-label">Material: Aluminum</label>
+                        </div>
+                        <div class="input-group">
+                            <label for="color-select" class="input-label">Color:</label>
+                            <select id="color-select" class="input-field">
+                                <option>Gray</option>
+                                <option>White</option>
+                                <option>Black</option>
+                                <option>Dark Blue</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="shelves-input" class="input-label">Number of Shelves:</label>
+                            <input type="number" id="shelves-input" class="input-field" value="2" min="0" max="10">
+                        </div>
+                        <div class="input-group">
+                            <button id="toggle-door-btn" class="button">Open Door</button>
+                            <p style="font-size: 0.85rem; color: #867f82; margin-top: 8px;">
+                                View internal shelves
+                            </p>
+                        </div>
+                        <div class="input-group">
+                            <button id="toggle-hollow-btn" class="button">Show Interior</button>
+                            <p style="font-size: 0.85rem; color: #867f82; margin-top: 8px;">
+                                Toggle cabinet body visibility
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="finish-select" class="input-label">Finish:</label>
-                    <select id="finish-select" class="input-field">
-                        <option value="none">None</option>
-                        <option value="painted">Painted</option>
-                        <option value="stained">Stained</option>
-                    </select>
+
+                 <!-- ROOM SETUP SECTION -->
+                <div class="accordion-section">
+                    <button class="accordion-header collapsed">
+                        <span>Room Setup</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="input-group">
+                            <label for="room-photo" class="input-label">Upload Room Photo:</label>
+                            <input type="file" id="room-photo" class="input-field" accept="image/*">
+                            <button id="clear-photo" class="button" style="margin-top: 8px; display: none;">Clear
+                                Photo</button>
+                        </div>
+                        <div class="input-group">
+                            <button id="toggle-3d-room-btn" class="button">Show 3D Room</button>
+                            <p style="font-size: 0.85rem; color: #867f82; margin-top: 8px;">
+                                Display a 3D room environment
+                            </p>
+                        </div>
+                        <div class="input-group">
+                            <label for="ceiling-height" class="input-label">Ceiling Height (feet):</label>
+                            <input type="number" id="ceiling-height" class="input-field" value="8" min="7" max="14"
+                                step="0.5">
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="color-select" class="input-label">Color:</label>
-                    <select id="color-select" class="input-field">
-                        <option>Tan</option>
-                        <option>Light Brown</option>
-                        <option>Brown</option>
-                        <option>Dark Brown</option>
-                        <option>White</option>
-                        <option>Black</option>
-                        <option>Red</option>
-                        <option>Orange</option>
-                        <option>Yellow</option>
-                        <option>Green</option>
-                        <option>Blue</option>
-                        <option>Indigo</option>
-                        <option>Violet</option>
-                    </select>
+
+                <!-- BUILD LAYOUT SECTION -->
+                <div class="accordion-section">
+                    <button class="accordion-header collapsed">
+                        <span>Build Your Layout</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="input-group">
+                            <button id="placement-mode-btn" class="button">Enable Placement Mode</button>
+                            <p style="font-size: 0.85rem; color: #867f82; margin-top: 8px; margin-bottom: 0;">
+                                <strong>How to use:</strong><br>
+                                1. Upload a room photo (optional)<br>
+                                2. Enable placement mode<br>
+                                3. Click anywhere in the 3D view to add cabinets<br>
+                                4. Disable when done placing
+                            </p>
+                        </div>
+                        <div class="input-group" id="placement-actions" style="display: none;">
+                            <button id="delete-selected-btn" class="button button-danger">Delete Selected
+                                Cabinet</button>
+                            <button id="clear-all-btn" class="button button-danger">Clear All Cabinets</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -90,6 +161,14 @@
             <div id="viewer-3d" class="viewer-container">
                 <!-- 3D viewer will be rendered here -->
             </div>
+            <!-- SAVE/EXPORT CONTROLS  -->
+            <div class="fixed-controls">
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <button id="save-btn" class="button">Save Design</button>
+                    <button id="load-btn" class="button">Load Design</button>
+                    <button id="export-btn" class="button">Export as Image</button>
+                </div>
+            </div>
         </section>
 
 
@@ -97,20 +176,25 @@
         <section class="cost-panel">
             <h1 class="cost-title">COST ESTIMATE</h1>
             <div class="cost-details">
-                <p class="cost-explain">Material cost = (volume of cabinet) x (cost per cubic foot) x (material multiplier)</p>
+                <p class="cost-explain">Material cost = (aluminum surface area) x (cost per sq ft)</p>
                 <p id="material-cost">Material Cost: $0.00</p>
                 <br>
-                <p class="cost-explain">Finish Cost = Flat Rate</p>
-                <p id="finish-cost">Finish Cost: $0.00</p>
+                <p class="cost-explain">Shelf Cost = (# of shelves) x (shelf cost)</p>
+                <p id="shelf-cost">Shelf Cost: $0.00</p>
                 <br>
-                <p class="cost-explain">Total = material + finish</p>
+                <p class="cost-explain">Total = material + shelves</p>
                 <p id="total-cost">Total Cost: $0.00</p>
             </div>
+            <!-- CREDIT -->
             <a href="https://chloeschm.github.io/portfolio-website/" target="_blank" class="credit">Design by Chloe</a>
         </section>
     </div>
 
+    <!-- Hidden file input for loading saved designs -->
+    <input type="file" id="load-file-input" accept=".json" style="display: none;">
 
-<script type="module" src="main.js"></script>
+    <script type="module" src="main.js"></script>
 
 </body>
+
+</html>

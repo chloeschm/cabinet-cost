@@ -19,6 +19,7 @@ html, body {
     background-color: #C0B29E;
     color: #595457;
     border-right: 2px solid #8B6F47;
+    overflow-y: auto;
 }
 
 .control-title {
@@ -31,13 +32,69 @@ html, body {
     padding: 24px;
     display: flex;
     flex-direction: column;
+    gap: 12px;
+}
+
+/* COLLAPSABLE SECTIONS */
+.accordion-section {
+    border: 1.5px solid #8B6F47;
+    border-radius: 6px;
+    background-color: #F5F5F4;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #D8CFC4;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #595457;
+    transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+    background-color: #CFC2AE;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.collapsed .accordion-icon {
+    transform: rotate(0deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 16px;
+}
+
+.accordion-content.active {
+    max-height: 1000px; 
+    padding: 16px;
+    transition: max-height 0.4s ease-in;
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
 }
 
 .input-label {
@@ -68,9 +125,44 @@ html, body {
     appearance: textfield;
 }
 
+.input-field[type="file"] {
+    padding: 8px;
+    font-size: 0.85rem;
+}
+
 .input-field:disabled {
     background-color: #E7E5E4;
     color: #7A7477;
+}
+
+/* BUTTONS */
+.button {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    background-color: #4D6A52;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3F5A47;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.button-danger {
+    background-color: #8C2F2B;
+}
+
+.button-danger:hover {
+    background-color: #6E2522;
 }
 
 /* VIEW PANEL */
@@ -82,12 +174,24 @@ html, body {
     color: #464345;
     border-left: 2px solid #8B6F47;
     border-right: 2px solid #8B6F47;
+    position: relative;
 }
 
 .view-title {
     text-align: center;
     font-family: 'Unbounded', sans-serif, cursive;
     font-weight: 500;
+}
+
+/* FIXED CONTROLS */
+.fixed-controls {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background-color: #F5F5F4;
+    z-index: 10;
 }
 
 /* COST PANEL */
@@ -98,6 +202,7 @@ html, body {
     background-color: #C0B29E;
     color: #595457;
     border-left: 2px solid #8B6F47;
+    position: relative;
 }
 
 .cost-title {
@@ -113,6 +218,7 @@ html, body {
     letter-spacing: 0.02rem;
     padding: 24px;
     color: #7A7477;
+    flex: 1;
 }
 
 .cost-explain {
@@ -120,22 +226,11 @@ html, body {
     color: #867f82;
 }
 
-.button, .option.active {
-    background-color: #4D6A52;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 4px;
-}
-
-.button:hover {
-    background-color: #3F5A47;
-}
-
-
 /* MAIN.JS CSS */
 .viewer-container {
     flex: 1;
     position: relative;
+    min-height: 400px;
 }
 
 .viewer-container canvas {
@@ -146,13 +241,16 @@ html, body {
 
 /* FOOTER */
 .credit {
-    margin-top: auto;
+    position: sticky;
+    bottom: 0;
     text-align: right;
     font-size: 0.9rem;
     color: #8B6F47; 
     text-decoration: none;
-    padding-top: 20px;
-    padding-right: 5px;
+    padding: 16px 12px;
+    background-color: #C0B29E;
+    display: block;
+    z-index: 10;
 }
 
 .credit:hover {
